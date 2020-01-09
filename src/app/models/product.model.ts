@@ -6,7 +6,7 @@ export class Product {
     _amount: number;
     _image_link: string;
 
-    constructor(name: string, description: string, price: number, amount: number, image_link: string){
+    constructor(name: string, description: string, price: number, amount: number, image_link: string) {
         this._name = name;
         this._description = description;
         this._price = price;
@@ -17,7 +17,7 @@ export class Product {
     get id(): number {
         return this._id;
     }
-    
+
     set id(value: number) {
         this._id = value;
     }
@@ -45,7 +45,7 @@ export class Product {
     set price(value: number) {
         this._price = value;
     }
-    
+
     get amount(): number {
         return this._amount;
     }
@@ -61,5 +61,5 @@ export class Product {
     set imageLink(value: string) {
         this._image_link = value;
     }
-    
+
 }

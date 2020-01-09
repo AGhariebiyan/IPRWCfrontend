@@ -8,24 +8,29 @@ import { Product } from '../models/product.model';
 })
 
 export class ProductService {
+    products: Product[] = [];
 
-    constructor(private http: HttpService){}
+    constructor(private http: HttpService) {}
 
-    getProducts(): Observable<Product[]>{
+    getProductsFromDatabase(): Observable<Product[]> {
         return this.http.makeGetRequest('http://localhost:8080/product');
     }
 
-    addProduct(body:any) {
-        this.http.makePostRequest('http://localhost:8080/product/add', body)
-        console.log(body + "in de service")
+    addProduct(body: any) {
+        return this.http.makePostRequest('http://localhost:8080/product/add', body);
+        console.log(body + 'in de service');
     }
 
     deleteProduct(id: number) {
-        this.http.makeDeleteRequest("http://localhost:8080/product/delete/" + id);
+      return this.http.makeDeleteRequest('http://localhost:8080/product/delete/' + id);
     }
 
     updateProduct(id: number, body: any) {
-        this.http.makePutRequest("http://localhost:8080/product/update/" + id, body)
+        return this.http.makePutRequest('http://localhost:8080/product/update/' + id, body);
+    }
+
+    getProductById(id: number) {
+      return this.http.makeGetRequest('http://localhost:8080/product/' + id);
     }
 
 }

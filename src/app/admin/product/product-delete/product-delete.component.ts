@@ -11,8 +11,6 @@ import { Router } from '@angular/router';
 export class ProductDeleteComponent implements OnInit {
   products: Product[] = [];
 
-  @ViewChild('productId', {static: true}) productId: ElementRef;
-
   constructor(private productService: ProductService, private router: Router) { }
 
   ngOnInit() {
@@ -20,15 +18,14 @@ export class ProductDeleteComponent implements OnInit {
   }
 
   getProducts(): void {
-    this.productService.getProducts().subscribe(product => this.products = product);
+    this.productService.getProductsFromDatabase().subscribe(product => this.products = product);
   }
 
   onDelete(id: number) {
-    this.productService.deleteProduct(id);
+    this.productService.deleteProduct(id).subscribe();
   }
 
   onUpdate(id: number) {
-    // this.productService.updateProduct(this.productId.nativeElement.value, );
-    // this.router.navigate(['/update']);
+    this.router.navigateByUrl('/update/' + id);
   }
 }

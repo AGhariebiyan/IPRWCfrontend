@@ -1,0 +1,5 @@
+<li *ngFor="let item of cart ">
+  {{item.product.name}}
+  <button (click)="cartService.removeFromCart(item.product.id)">DELETE</button>
+</li>
+<p>Cart WERKT!</p>

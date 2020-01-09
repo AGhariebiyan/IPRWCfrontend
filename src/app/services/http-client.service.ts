@@ -14,15 +14,15 @@ export class HttpService {
   }
 
   makePostRequest(query: string, body: any) {
-    this.http.post(query, body).subscribe();
+    return this.http.post(query, body);
   }
 
   makePutRequest(query: string, body: any) {
-    this.http.put(query, body).subscribe();
+    return this.http.put(query, body);
   }
 
   makeDeleteRequest(query: string) {
-    this.http.delete(query).subscribe();
+    return this.http.delete(query);
   }
 
 }

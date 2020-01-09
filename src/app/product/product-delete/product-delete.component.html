@@ -1,4 +1,0 @@
-<li *ngFor="let product of products" #productId>{{product.id}}{{ product.name }} | {{product.description}} | {{product.price}} | {{product.amount}} | {{product.imageLink}}
-    <button (click)="onDelete(product.id)">Delete</button>
-    <button routerLink="/update">Wijzigen</button>
-</li>

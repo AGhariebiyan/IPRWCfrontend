@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl} from '@angular/forms'
+import {FormGroup, FormControl, Validators} from '@angular/forms';
 import { ProductService } from 'src/app/services/product.service';
 import { Product } from 'src/app/models/product.model';
 
@@ -16,11 +16,11 @@ export class ProductAddComponent implements OnInit {
 
   ngOnInit() {
     this.productAddForm = new FormGroup({
-      'name': new FormControl(null),
-      'description': new FormControl(null),
-      'price': new FormControl(null),
-      'amount': new FormControl(null),
-      'imageLink': new FormControl(null)
+      'name': new FormControl(null, Validators.required),
+      'description': new FormControl(null, Validators.required),
+      'price': new FormControl(null, Validators.required),
+      'amount': new FormControl(null, Validators.required),
+      'imageLink': new FormControl(null, Validators.required)
     });
   }
 
@@ -31,12 +31,9 @@ export class ProductAddComponent implements OnInit {
     const amount = this.productAddForm.value.amount;
     const imageLink = this.productAddForm.value.imageLink;
 
-    console.log(name + description + price + amount + imageLink);
-
     const product = new Product(name, description, price, amount, imageLink);
 
-    this.productService.addProduct(product);
-    // console.log(eachProduct)
+    this.productService.addProduct(product).subscribe();
   }
 
 }

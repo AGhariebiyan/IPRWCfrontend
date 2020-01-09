@@ -1,0 +1,9 @@
+<button (click)="routeToAddPage()">Product toevoegen</button>
+<br>
+<li *ngFor="let product of products">{{product.id}}{{ product.name }} | {{product.description}} | {{product.price}} | {{product.amount}} | {{product.imageLink}}
+  <button (click)="onDelete(product.id)">Delete</button>
+  <button (click)="onUpdate(product.id)">Wijzigen</button>
+</li>
+
+
+<!--<app-product-delete></app-product-delete>-->
