@@ -1,9 +1,36 @@
-<button (click)="routeToAddPage()">Product toevoegen</button>
-<br>
-<li *ngFor="let product of products">{{product.id}}{{ product.name }} | {{product.description}} | {{product.price}} | {{product.amount}} | {{product.imageLink}}
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <button (click)="routeToAddPage()" type="button" class="btn btn-success">Product toevoegen</button>
+
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">product</th>
+            <th scope="col">price</th>
+            <th scope="col">amount</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products">
+            <th scope="row" (click)="onUpdate(product.id)">{{product.id}}</th>
+            <td (click)="onUpdate(product.id)">{{product.name}}</td>
+            <td (click)="onUpdate(product.id)">{{product.price}}</td>
+            <td (click)="onUpdate(product.id)">{{product.amount}}</td>
+            <td>
+              <button (click)="onDelete(product.id)" type="button" class="btn btn-danger">delete</button> 
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      
+    </div>
+  </div>
+</div>
+
+<!-- <li *ngFor="let product of products">{{product.id}}{{ product.name }} | {{product.description}} | {{product.price}} | {{product.amount}} | {{product.imageLink}}
   <button (click)="onDelete(product.id)">Delete</button>
   <button (click)="onUpdate(product.id)">Wijzigen</button>
-</li>
-
-
-<!--<app-product-delete></app-product-delete>-->
+</li> -->

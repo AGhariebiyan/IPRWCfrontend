@@ -1,5 +1,34 @@
-<li *ngFor="let item of cart ">
-  {{item.product.name}}
-  <button (click)="cartService.removeFromCart(item.product.id)">DELETE</button>
-</li>
-<p>Cart WERKT!</p>
+<!--<li *ngFor="let item of cart ">-->
+<!--  {{item.product.name}}-->
+<!--  <button (click)="cartService.removeFromCart(item.product.id)">DELETE</button>-->
+<!--</li>-->
+
+<div class="container">
+  <div class="row">
+
+    <div *ngFor="let item of cart" class="card col-sm-4">
+      <img src="https://www.prowarehouse.nl/uploads/fmimages/2387_2086.png" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{item.product.name}}</h5>
+        <p class="card-text">{{item.product.description}}</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">&euro;{{item.product.price}},-</li>
+        <li class="list-group-item">aantal beschikbaar: {{item.product.amount}}</li>
+      </ul>
+      <div class="card-body">
+        <!-- <button (click)="addToCart(product)" >Toevoegen aan winkelwagen</button> -->
+<!--        <a (click)="cartService.removeFromCart(item.product.id)" href="#" class="card-link">Verwijder van winkelwagen</a>-->
+        <button (click)="cartService.removeFromCart(item.product.id)">Verwijder van winkelwagen</button>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
+<!-- <li *ngFor="let product of products">{{product.id}}{{ product.name }} | {{product.description}} | {{product.price}} | {{product.amount}} | {{product.imageLink}}
+  <button (click)="onDelete(product.id)">Delete</button>
+  <button (click)="onUpdate(product.id)">Wijzigen</button>
+</li> -->
+

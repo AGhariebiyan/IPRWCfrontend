@@ -1,16 +1,23 @@
-<div *ngFor="let product of products" class="card" style="width: 18rem;">
-  <img src="{{product.imageLink}}" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">{{product.name}}</h5>
-    <p class="card-text">{{product.description}}</p>
-  </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">&euro;{{product.price}},-</li>
-    <li class="list-group-item">aantal beschikbaar: {{product.amount}}</li>
-  </ul>
-  <div class="card-body">
-    <button (click)="addToCart(product)" >Toevoegen aan winkelwagen</button>
-<!--    <a (click)="addToCart(product)" href="#" class="card-link">Toevoegen aan winkelwagen</a>-->
+<div class="container">
+  <div class="row">
+
+      <div *ngFor="let product of products" class="card col-sm-4">
+        <img src="https://www.prowarehouse.nl/uploads/fmimages/2387_2086.png" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{product.name}}</h5>
+          <p class="card-text">{{product.description}}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">&euro;{{product.price}},-</li>
+          <li class="list-group-item">aantal beschikbaar: {{product.amount}}</li>
+        </ul>
+        <div class="card-body">
+          <!-- <button (click)="addToCart(product)" >Toevoegen aan winkelwagen</button> -->
+<!--         <a (click)="addToCart(product)" class="card-link">Toevoegen aan winkelwagen</a>-->
+          <button (click)="addToCart(product)">Toevoegen aan winkelwagen</button>
+        </div>
+      </div>
+
+
   </div>
 </div>
-
