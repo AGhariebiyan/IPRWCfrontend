@@ -3,6 +3,7 @@ export class Account {
   private _email: string;
   private _password: string;
   private _accountType: string;
+  private _jwttoken: string;
 
   constructor(email: string, password: string, accountType: string) {
     this._email = email;
