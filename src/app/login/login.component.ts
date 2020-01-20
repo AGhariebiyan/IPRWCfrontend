@@ -31,13 +31,14 @@ export class LoginComponent implements OnInit {
 
     const credentials = new CredentialModel(email, password);
 
-    if (this.authService.checkCredentials(credentials).subscribe()) {
-      this.ingelogd = true;
-      this.route.navigateByUrl('products');
-      // localStorage.setItem('token', )
-    } else {
-      console.log('FOUT GEGAAN!!!');
-    }
+    this.authService.checkCredentials(credentials);
+
+    // if (this.authService.checkCredentials(credentials).subscribe(data => this.account = data);) {
+    //   this.ingelogd = true;
+    //   this.route.navigateByUrl('products');
+    // } else {
+    //   console.log('FOUT GEGAAN!!!');
+    // }
   }
 
   navigateToRegister() {

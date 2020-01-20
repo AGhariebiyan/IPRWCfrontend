@@ -1,14 +1,26 @@
-export class Account {
+export class User {
+  private _name: string;
   private _id: number;
   private _email: string;
   private _password: string;
   private _accountType: string;
   private _jwttoken: string;
 
-  constructor(email: string, password: string, accountType: string) {
+  constructor(name: string, id: number, email: string, password: string, accountType: string, jwttoken: string) {
+    this._name = name;
+    this._id = id;
     this._email = email;
     this._password = password;
     this._accountType = accountType;
+    this._jwttoken = jwttoken;
+  }
+
+  get name(): string {
+    return this._name;
+  }
+
+  set name(value: string) {
+    this._name = value;
   }
 
   get id(): number {
@@ -42,7 +54,6 @@ export class Account {
   set accountType(value: string) {
     this._accountType = value;
   }
-
 
   get jwttoken(): string {
     return this._jwttoken;

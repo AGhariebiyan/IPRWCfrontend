@@ -20,7 +20,12 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import {CartService} from './services/cart.service';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './login/register/register.component';
+import {JwtModule} from '@auth0/angular-jwt';
 
+// @ts-ignore
+// @ts-ignore
+// @ts-ignore
+// @ts-ignore
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,6 +48,11 @@ import { RegisterComponent } from './login/register/register.component';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => (localStorage.getItem('jwttoken'))
+      }
+    })
   ],
   providers: [
     ProductService,

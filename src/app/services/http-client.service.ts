@@ -13,7 +13,7 @@ export class HttpService {
     return this.http.get(query);
   }
 
-  makePostRequest(query: string, body: any) {
+  makePostRequest(query: string, body: any){
     return this.http.post(query, body);
   }
 
