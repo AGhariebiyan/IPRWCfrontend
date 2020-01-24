@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductComponent } from './admin/product/product.component';
@@ -17,15 +16,15 @@ import { ProductCustomerComponent } from './customer/product-customer/product-cu
 import { NavbarComponent } from './navbar/navbar.component';
 import { ContactComponent } from './contact/contact.component';
 import { AboutUsComponent } from './about-us/about-us.component';
-import {CartService} from './services/cart.service';
+import { CartService } from './services/cart.service';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './login/register/register.component';
-import {JwtModule} from '@auth0/angular-jwt';
+import { JwtModule } from '@auth0/angular-jwt';
 
-// @ts-ignore
-// @ts-ignore
-// @ts-ignore
-// @ts-ignore
+export function tokenGetter() {
+  return localStorage.getItem('jwttoken');
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +49,7 @@ import {JwtModule} from '@auth0/angular-jwt';
     ReactiveFormsModule,
     JwtModule.forRoot({
       config: {
-        tokenGetter: () => (localStorage.getItem('jwttoken'))
+        tokenGetter
       }
     })
   ],

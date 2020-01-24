@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
 
     const credentials = new CredentialModel(email, password);
 
-    this.authService.checkCredentials(credentials);
+    this.authService.login(credentials);
 
     // if (this.authService.checkCredentials(credentials).subscribe(data => this.account = data);) {
     //   this.ingelogd = true;
