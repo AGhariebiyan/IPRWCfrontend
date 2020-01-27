@@ -21,18 +21,10 @@ export class AuthService {
           this.user = data as User;
           localStorage.setItem('jwttoken', this.user.jwttoken); }
       );
-      // if (this.user.accountType === 'ADMIN') {
-      //       //   this.router.navigateByUrl('admin/products');
-      //       // } else {
-      //       //   this.router.navigateByUrl('products');
-      //       // }
-      //     // } else {
-      //     //   return false;
       return true;
     } else {
       return false;
     }
-
   }
 
   logout() {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import {AuthService} from '../services/auth-service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,10 +8,12 @@ import {Router} from '@angular/router';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  accountType = " ";
 
-  constructor(private route: Router) { }
+  constructor(private route: Router, private authService: AuthService) { }
 
   ngOnInit() {
+    this.accountType = this.authService.getCurrentAccountType();
   }
 
   navigateToContact() {

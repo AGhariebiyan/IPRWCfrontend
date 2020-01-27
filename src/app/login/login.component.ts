@@ -46,12 +46,12 @@ export class LoginComponent implements OnInit {
   }
 
   navigateToOverview() {
-    // if (this.authService.getCurrentAccountType() === 'admin') {
-    //   this.route.navigateByUrl('admin/products');
-    // }
-    // if (this.authService.getCurrentAccountType() === 'customer') {
-    //   this.route.navigateByUrl('products');
-    // }
+    if (this.authService.getCurrentAccountType() === 'admin') {
+      this.route.navigateByUrl('admin/products');
+    }
+    if (this.authService.getCurrentAccountType() === 'customer') {
+      this.route.navigateByUrl('products');
+    }
   }
 
   refresh(): void {
