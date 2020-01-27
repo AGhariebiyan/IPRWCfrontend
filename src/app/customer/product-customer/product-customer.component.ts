@@ -14,7 +14,7 @@ export class ProductCustomerComponent implements OnInit {
   products: Product[] = [];
   cart: Cart[] = [];
 
-  constructor(private productService: ProductService,private cartService: CartService, private router: Router) { }
+  constructor(private productService: ProductService, private cartService: CartService, private router: Router) { }
 
   ngOnInit() {
     this.getProducts();
@@ -25,7 +25,7 @@ export class ProductCustomerComponent implements OnInit {
   }
 
   addToCart(product: Product): void {
-    this.cartService.addToCart(product, 2);
+    this.cartService.addToCart(product);
   }
 
 }

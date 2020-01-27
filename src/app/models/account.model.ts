@@ -5,6 +5,7 @@ export class Account {
   private _accountType: string;
   private _jwttoken: string;
 
+  //Voor het registreren en aanmaken van een account omdat angular geen twee constru
   constructor(email: string, password: string, accountType: string) {
     this._email = email;
     this._password = password;

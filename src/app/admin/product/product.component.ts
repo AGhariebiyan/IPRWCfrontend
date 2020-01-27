@@ -18,7 +18,8 @@ export class ProductComponent implements OnInit {
   }
 
   getProducts(): void {
-    this.productService.getProductsFromDatabase().subscribe(product => this.products = product);
+    this.productService.getProductsFromDatabase().subscribe((product) => {
+      this.products = product; console.log(product); });
   }
 
   onDelete(id: number) {

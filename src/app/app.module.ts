@@ -20,6 +20,7 @@ import { CartService } from './services/cart.service';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './login/register/register.component';
 import { JwtModule } from '@auth0/angular-jwt';
+import { AdminNavbarComponent } from './admin-navbar/admin-navbar.component';
 
 export function tokenGetter() {
   return localStorage.getItem('jwttoken');
@@ -40,7 +41,8 @@ export function tokenGetter() {
     ContactComponent,
     AboutUsComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    AdminNavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -49,9 +51,11 @@ export function tokenGetter() {
     ReactiveFormsModule,
     JwtModule.forRoot({
       config: {
-        tokenGetter
+        tokenGetter,
+        whitelistedDomains: ['localhost:8080'],
+        blacklistedRoutes: ['']
       }
-    })
+    }),
   ],
   providers: [
     ProductService,

@@ -6,6 +6,7 @@ export class User {
   private _accountType: string;
   private _jwttoken: string;
 
+  //Aangemelde gebruiker
   constructor(name: string, id: number, email: string, password: string, accountType: string, jwttoken: string) {
     this._name = name;
     this._id = id;

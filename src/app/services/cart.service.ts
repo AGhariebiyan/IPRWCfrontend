@@ -9,8 +9,8 @@ export class CartService {
     return this.cart;
   }
 
-  addToCart(product, amount) {
-    const cartItem: Cart = {product, amount};
+  addToCart(product) {
+    const cartItem: Cart = {product};
     this.cart.push(cartItem);
     localStorage.setItem('cartItems', JSON.stringify(this.cart));
 
@@ -31,4 +31,3 @@ export class CartService {
     }
   }
 }
-
