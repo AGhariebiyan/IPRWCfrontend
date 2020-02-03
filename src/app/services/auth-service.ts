@@ -19,9 +19,12 @@ export class AuthService {
       this.makePostRequest(credentials)
         .subscribe(data => {
           this.user = data as User;
-          localStorage.setItem('jwttoken', this.user.jwttoken); }
+          if (this.user.jwttoken !== null) {
+              localStorage.setItem('jwttoken', this.user.jwttoken);
+              return true;
+            }
+          }
       );
-      return true;
     } else {
       return false;
     }
