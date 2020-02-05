@@ -21,6 +21,8 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './login/register/register.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { AdminNavbarComponent } from './admin-navbar/admin-navbar.component';
+// import {AuthGuard} from './services/auth.guard';
+import {AuthService} from './services/auth-service';
 
 export function tokenGetter() {
   return localStorage.getItem('jwttoken');
@@ -59,7 +61,8 @@ export function tokenGetter() {
   ],
   providers: [
     ProductService,
-    CartService
+    CartService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

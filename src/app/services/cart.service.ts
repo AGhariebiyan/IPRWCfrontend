@@ -18,16 +18,8 @@ export class CartService {
   }
 
   removeFromCart(id: number) {
-    this.cart.splice(this.findItem(id), 1);
-    console.log(id + 'remove');
+    this.cart.splice(id, 1);
+
   }
 
-  findItem(id) {
-    for (const item of this.cart) {
-      if (item.product.id === id) {
-        return item.product.id;
-      }
-      console.log(item);
-    }
-  }
 }

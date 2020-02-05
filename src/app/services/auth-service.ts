@@ -3,13 +3,13 @@ import {HttpService} from './http-client.service';
 import {Observable} from 'rxjs';
 import {CredentialModel} from '../models/credential.model';
 import {User} from '../models/user.model';
-import {Router} from '@angular/router';
+import {CanActivate, Router} from '@angular/router';
 import {JwtHelperService} from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class AuthService implements CanActivate{
   user: User;
 
   constructor(private http: HttpService, private router: Router, public jwtHelper: JwtHelperService) {}
@@ -28,6 +28,24 @@ export class AuthService {
     } else {
       return false;
     }
+  }
+
+  isAuthenticated(): boolean {
+    const token = localStorage.getItem('jwttoken');
+
+    return !this.jwtHelper.isTokenExpired(token);
+  }
+
+  canActivate(): boolean {
+    const token = localStorage.getItem('jwttoken');
+    if (token !== null && !this.jwtHelper.isTokenExpired(token)) {
+
+      return true;
+    } else {
+      this.router.navigateByUrl("login");
+    }
+
+    return true;
   }
 
   logout() {

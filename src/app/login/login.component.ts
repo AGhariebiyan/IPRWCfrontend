@@ -38,18 +38,26 @@ export class LoginComponent implements OnInit {
 
     if (this.authService.login(credentials)) {
       this.ingelogd = true;
-      console.log(this.ingelogd);
-      this.navigateToOverview();
+      console.log("ingelogd");
+      this.route.navigateByUrl("products");
     } else {
       this.ingelogd = false;
+      console.log("fout");
     }
   }
 
   navigateToOverview() {
+    console.log("navigeer");
     if (this.authService.getCurrentAccountType() === 'admin') {
       this.route.navigateByUrl('admin/products');
+      console.log("admin");
     }
     if (this.authService.getCurrentAccountType() === 'customer') {
+      this.route.navigateByUrl('products');
+      console.log("customer");
+    }
+
+    if (this.authService.getCurrentAccountType() === null) {
       this.route.navigateByUrl('products');
     }
   }
