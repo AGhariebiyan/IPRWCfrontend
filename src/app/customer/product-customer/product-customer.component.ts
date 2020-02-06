@@ -4,6 +4,7 @@ import {ProductService} from '../../services/product.service';
 import {Router} from '@angular/router';
 import {CartService} from '../../services/cart.service';
 import {Cart} from '../../models/cart.model';
+import {AuthService} from '../../services/auth-service';
 
 @Component({
   selector: 'app-product-customer',
@@ -13,11 +14,13 @@ import {Cart} from '../../models/cart.model';
 export class ProductCustomerComponent implements OnInit {
   products: Product[] = [];
   cart: Cart[] = [];
+  currentAccountType: string;
 
-  constructor(private productService: ProductService, private cartService: CartService, private router: Router) { }
+  constructor(private productService: ProductService, private cartService: CartService, private router: Router, private authservice: AuthService) { }
 
   ngOnInit() {
     this.getProducts();
+    this.currentAccountType = this.authservice.getCurrentAccountType()
   }
 
   getProducts(): void {

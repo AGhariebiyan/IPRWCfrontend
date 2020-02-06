@@ -11,7 +11,7 @@
           <li class="list-group-item">&euro;{{product.price}},-</li>
           <li class="list-group-item">aantal beschikbaar: {{product.amount}}</li>
         </ul>
-        <div class="card-body">
+        <div *ngIf="currentAccountType !== 'admin'" class="card-body">
           <!-- <button (click)="addToCart(product)" >Toevoegen aan winkelwagen</button> -->
 <!--         <a (click)="addToCart(product)" class="card-link">Toevoegen aan winkelwagen</a>-->
           <button (click)="addToCart(product)">Toevoegen aan winkelwagen</button>

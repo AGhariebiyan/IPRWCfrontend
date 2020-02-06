@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import {AuthService} from '../services/auth-service';
+import {User} from '../models/user.model';
 
 @Component({
   selector: 'app-admin-navbar',
@@ -7,22 +9,17 @@ import {Router} from '@angular/router';
   styleUrls: ['./admin-navbar.component.css']
 })
 export class AdminNavbarComponent implements OnInit {
+  userName = "";
 
-  constructor(private route: Router) { }
+  constructor(private route: Router, private authService: AuthService) { }
 
   ngOnInit() {
+    console.log(this.authService.userName);
+    this.userName = this.authService.userName;
   }
 
-  navigateToContact() {
-    this.route.navigateByUrl('contact');
-  }
-
-  navigateToAboutUs() {
-    this.route.navigateByUrl('about-us');
-  }
-
-  navigateToLogIn() {
-    this.route.navigateByUrl('login');
-  }
+  logout() {
+    this.authService.logout();
+}
 
 }

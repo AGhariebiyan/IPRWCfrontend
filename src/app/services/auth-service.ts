@@ -11,6 +11,7 @@ import {JwtHelperService} from '@auth0/angular-jwt';
 })
 export class AuthService implements CanActivate{
   user: User;
+  userName: string;
 
   constructor(private http: HttpService, private router: Router, public jwtHelper: JwtHelperService) {}
 
@@ -19,6 +20,8 @@ export class AuthService implements CanActivate{
       this.makePostRequest(credentials)
         .subscribe(data => {
           this.user = data as User;
+          this.userName = this.user.email;
+          console.log(this.user);
           if (this.user.jwttoken !== null) {
               localStorage.setItem('jwttoken', this.user.jwttoken);
               return true;
