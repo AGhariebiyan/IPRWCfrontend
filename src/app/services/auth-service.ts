@@ -42,19 +42,12 @@ export class AuthService implements CanActivate {
     }
   }
 
-  isAuthenticated(): boolean {
-    const token = localStorage.getItem('jwttoken');
-
-    return !this.jwtHelper.isTokenExpired(token);
-  }
-
   canActivate(): boolean {
     const token = localStorage.getItem('jwttoken');
-    if (token !== null && !this.jwtHelper.isTokenExpired(token)) {
-
+    if (token !== null && !this.jwtHelper.isTokenExpired(token) && this.user.accountType !== 'admin') {
       return true;
     } else {
-      this.router.navigateByUrl("login");
+      this.router.navigateByUrl('login');
     }
 
     return true;
@@ -73,16 +66,6 @@ export class AuthService implements CanActivate {
     const decodedToken = this.jwtHelper.decodeToken(jwttoken);
     return decodedToken.accountId;
   }
-
-  // getCurrentAccountType() {
-  //   if ('jwttoken' in localStorage) {
-  //     const jwttoken = localStorage.getItem('jwttoken');
-  //     const decodedToken = this.jwtHelper.decodeToken(jwttoken);
-  //     return decodedToken.accountType;
-  //   } else {
-  //     return false;
-  //   }
-  // }
 
   makePostRequest(body: CredentialModel) {
     return this.http.makePostRequest('http://localhost:8080/login', body);

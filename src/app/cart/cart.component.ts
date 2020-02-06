@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Cart} from '../models/cart.model';
 import {CartService} from '../services/cart.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -10,7 +11,7 @@ import {CartService} from '../services/cart.service';
 export class CartComponent implements OnInit {
   cart: Cart[] = [];
 
-  constructor(private cartService: CartService) {
+  constructor(private cartService: CartService, private route: Router) {
     this.getCart();
   }
 
@@ -19,6 +20,11 @@ export class CartComponent implements OnInit {
 
   getCart() {
     this.cart = this.cartService.getCart();
+  }
+
+  emptyCart() {
+    this.cartService.emptyCart();
+    this.getCart();
   }
 
 }

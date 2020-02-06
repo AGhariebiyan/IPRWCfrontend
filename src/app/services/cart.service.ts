@@ -19,7 +19,11 @@ export class CartService {
 
   removeFromCart(id: number) {
     this.cart.splice(id, 1);
+  }
 
+  emptyCart() {
+    this.cart = [];
+    localStorage.removeItem('cartItems');
   }
 
 }

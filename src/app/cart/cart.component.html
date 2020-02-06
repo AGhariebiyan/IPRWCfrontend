@@ -1,9 +1,6 @@
-<!--<li *ngFor="let item of cart ">-->
-<!--  {{item.product.name}}-->
-<!--  <button (click)="cartService.removeFromCart(item.product.id)">DELETE</button>-->
-<!--</li>-->
-
 <div class="container">
+  <button (click)="emptyCart()">Leeg Winkelwagen</button>
+
   <div class="row">
 
     <div *ngFor="let item of cart; index as i" class="card col-sm-4">
@@ -17,8 +14,6 @@
         <li class="list-group-item">aantal beschikbaar: {{item.product.amount}}</li>
       </ul>
       <div class="card-body">
-        <!-- <button (click)="addToCart(product)" >Toevoegen aan winkelwagen</button> -->
-<!--        <a (click)="cartService.removeFromCart(item.product.id)" href="#" class="card-link">Verwijder van winkelwagen</a>-->
         <button (click)="cartService.removeFromCart(i)">Verwijder van winkelwagen</button>
       </div>
     </div>
@@ -26,9 +21,4 @@
 
   </div>
 </div>
-
-<!-- <li *ngFor="let product of products">{{product.id}}{{ product.name }} | {{product.description}} | {{product.price}} | {{product.amount}} | {{product.imageLink}}
-  <button (click)="onDelete(product.id)">Delete</button>
-  <button (click)="onUpdate(product.id)">Wijzigen</button>
-</li> -->
 
