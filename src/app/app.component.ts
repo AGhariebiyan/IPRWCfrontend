@@ -13,9 +13,4 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  checkAccountType() {
-    const accountType = this.authService.getCurrentAccountType();
-    return accountType;
-  }
 }

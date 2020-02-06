@@ -46,22 +46,6 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  navigateToOverview() {
-    console.log("navigeer");
-    if (this.authService.getCurrentAccountType() === 'admin') {
-      this.route.navigateByUrl('admin/products');
-      console.log("admin");
-    }
-    if (this.authService.getCurrentAccountType() === 'customer') {
-      this.route.navigateByUrl('products');
-      console.log("customer");
-    }
-
-    if (this.authService.getCurrentAccountType() === null) {
-      this.route.navigateByUrl('products');
-    }
-  }
-
   refresh(): void {
     window.location.reload();
   }

@@ -13,15 +13,13 @@ import { AdminComponent } from './admin/admin.component';
 import { CartComponent } from './cart/cart.component';
 import { CustomerComponent } from './customer/customer.component';
 import { ProductCustomerComponent } from './customer/product-customer/product-customer.component';
-import { NavbarComponent } from './navbar/navbar.component';
 import { ContactComponent } from './contact/contact.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { CartService } from './services/cart.service';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './login/register/register.component';
 import { JwtModule } from '@auth0/angular-jwt';
-import { AdminNavbarComponent } from './admin-navbar/admin-navbar.component';
-// import {AuthGuard} from './services/auth.guard';
+import { NavbarComponent } from './navbar/navbar.component';
 import {AuthService} from './services/auth-service';
 
 export function tokenGetter() {
@@ -39,12 +37,11 @@ export function tokenGetter() {
     CartComponent,
     CustomerComponent,
     ProductCustomerComponent,
-    NavbarComponent,
     ContactComponent,
     AboutUsComponent,
     LoginComponent,
     RegisterComponent,
-    AdminNavbarComponent
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

@@ -14,13 +14,19 @@ import {AuthService} from '../../services/auth-service';
 export class ProductCustomerComponent implements OnInit {
   products: Product[] = [];
   cart: Cart[] = [];
-  currentAccountType: string;
+  accountType: string;
 
-  constructor(private productService: ProductService, private cartService: CartService, private router: Router, private authservice: AuthService) { }
+  constructor(
+    private productService: ProductService,
+    private cartService: CartService,
+    private router: Router,
+    private authservice: AuthService) { }
 
   ngOnInit() {
     this.getProducts();
-    this.currentAccountType = this.authservice.getCurrentAccountType()
+    this.authservice.getValueAccountType().subscribe((value) => {
+      this.accountType = value;
+    });
   }
 
   getProducts(): void {

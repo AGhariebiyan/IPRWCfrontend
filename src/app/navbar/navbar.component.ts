@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthService} from '../services/auth-service';
+import {User} from '../models/user.model';
 
 @Component({
   selector: 'app-navbar',
@@ -8,24 +9,28 @@ import {AuthService} from '../services/auth-service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  accountType = " ";
+  userName: string;
+  isLoggedIn: boolean;
+  accountType: string;
 
   constructor(private route: Router, private authService: AuthService) { }
 
   ngOnInit() {
-    this.accountType = this.authService.getCurrentAccountType();
+    this.authService.getValueEmail().subscribe((value) => {
+      this.userName = value;
+    });
+    this.authService.getValueIsLoggedIn().subscribe((value) => {
+      this.isLoggedIn = value;
+    });
+    this.authService.getValueAccountType().subscribe((value) => {
+      this.accountType = value;
+    });
+    // this.accountType = this.authService.getCurrentAccountType();
+    // console.log(this.authService.getCurrentAccountType());
   }
 
-  navigateToContact() {
-    this.route.navigateByUrl('contact');
-  }
-
-  navigateToAboutUs() {
-    this.route.navigateByUrl('about-us');
-  }
-
-  navigateToLogIn() {
-    this.route.navigateByUrl('login');
-  }
+  logout() {
+    this.authService.logout();
+}
 
 }
