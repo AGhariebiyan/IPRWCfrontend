@@ -23,23 +23,20 @@ export class AuthService implements CanActivate {
   }
 
   login(credentials: CredentialModel) {
-    if (credentials.email !== '' && credentials.password !== '') {
+    // if (credentials !== null) {
       this.makePostRequest(credentials)
         .subscribe(data => {
           this.user = data as User;
           this.setValueEmail(this.user.email);
           this.setValueAccountType(this.user.accountType);
-          if (this.user.jwttoken !== null) {
+          if (this.user.email !== null) {
+            this.setValueIsLoggedIn(true);
+            if (this.user.jwttoken !== null) {
               localStorage.setItem('jwttoken', this.user.jwttoken);
-              return true;
             }
           }
+          }
       );
-      this.setValueIsLoggedIn(true);
-      console.log('auth' +this.getValueIsLoggedIn());
-    } else {
-      return false;
-    }
   }
 
   canActivate(): boolean {
