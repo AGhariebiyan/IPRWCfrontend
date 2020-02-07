@@ -26,35 +26,14 @@
         <button
           class="btn btn-success"
           type="submit"
-          [disabled]="!loginForm.valid">login</button>
+          [disabled]="!loginForm.valid">Login</button>
 
         <button
           class="btn btn-secondary"
-          (click)="navigateToRegister()">registreren</button>
+          (click)="navigateToRegister()">Registreren</button>
         <p *ngIf="ingelogd === false">Gebruikersnaam en/ of wachtwoord is fout.</p>
       </form>
     </div>
 
   </div>
 </div>
-
-<!-- <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-  <label for="">email:</label>
-  <input
-    type="text"
-    id="email"
-    name="email"
-    formControlName="email"><br>
-
-  <label for="">password:</label>
-  <input
-    type="password"
-    id="password"
-    name="password"
-    formControlName="password"><br>
-
-  <button
-    type="submit"
-    [disabled]="!loginForm.valid">login</button>
-  <button (click)="navigateToRegister()">registreren</button>
-</form> -->

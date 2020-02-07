@@ -11,6 +11,7 @@ import {CartComponent} from './cart/cart.component';
 import {CustomerComponent} from './customer/customer.component';
 // import {AuthService as AuthGuard from './services/auth-service';
 import {AuthService} from './services/auth-service';
+import {OrderComponent} from './order/order.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/products', pathMatch: 'full' },
@@ -22,7 +23,8 @@ const routes: Routes = [
   { path: 'admin/products', component: AdminComponent,  canActivate: [AuthService] },
   { path: 'admin/product/add', component: ProductAddComponent, canActivate: [AuthService] },
   { path: 'admin/update/:productId', component: ProductUpdateComponent, canActivate: [AuthService] },
-  { path: 'cart', component: CartComponent }
+  { path: 'cart', component: CartComponent },
+  { path: 'order', component: OrderComponent }
 ];
 
 @NgModule({

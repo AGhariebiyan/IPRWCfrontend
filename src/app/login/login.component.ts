@@ -27,14 +27,10 @@ export class LoginComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
     });
-    // this.loginForm = new FormGroup({
-    //   'email': new FormControl(null, Validators.required),
-    //   'password': new FormControl(null, Validators.required),
-    // });
   }
 
   onSubmit() {
-    const email = this.loginForm.value.email;
+    const email = this.loginForm.value.email.toLowerCase();
     const password = this.loginForm.value.password;
 
     const credentials = new CredentialModel(email, password);

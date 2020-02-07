@@ -1,19 +1,45 @@
-<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-  <label for="">email:</label>
-  <input
-    type="text"
-    id="email"
-    name="email"
-    formControlName="email"><br>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-12 col-md-ofsset-3">
+      <form class="col-sm-12" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 
-  <label for="">password:</label>
-  <input
-    type="password"
-    id="password"
-    name="password"
-    formControlName="password"><br>
+        <div class="form-group">
+          <label for="">Email:</label>
+          <input
+            class="form-control"
+            type="text"
+            id="email"
+            name="email"
+            formControlName="email">
+        </div>
 
-  <button
-    type="submit"
-    [disabled]="!registerForm.valid">login</button>
-</form>
+        <div class="form-group">
+        <label for="">Wachtwoord:</label>
+        <input
+          class="form-control"
+          type="password"
+          id="password"
+          name="password"
+          formControlName="password"><br>
+        </div>
+
+        <div class="form-group">
+          <label for="">Wachtwoord:</label>
+          <input
+            class="form-control"
+            type="password"
+            id="Repeatedpassword"
+            name="Repeatedpassword"
+            formControlName="Repeatedpassword"><br>
+        </div>
+
+        <button
+          class="btn btn-success"
+          type="submit"
+          [disabled]="!registerForm.valid">Registreer</button>
+        <p *ngIf="correctPassword === false">wachtwoorden komen niet overeen</p>
+      </form>
+    </div>
+
+  </div>
+</div>

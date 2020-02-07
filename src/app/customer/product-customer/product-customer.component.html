@@ -5,19 +5,16 @@
         <img src="https://www.prowarehouse.nl/uploads/fmimages/2387_2086.png" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">{{product.name}}</h5>
-          <p class="card-text">{{product.description}}</p>
+          <p class="card-text">{{product.description | shorten}}</p>
         </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item">&euro;{{product.price}},-</li>
           <li class="list-group-item">aantal beschikbaar: {{product.amount}}</li>
         </ul>
         <div *ngIf="accountType !== 'admin'" class="card-body">
-          <!-- <button (click)="addToCart(product)" >Toevoegen aan winkelwagen</button> -->
-<!--         <a (click)="addToCart(product)" class="card-link">Toevoegen aan winkelwagen</a>-->
-          <button (click)="addToCart(product)">Toevoegen aan winkelwagen</button>
+          <button (click)="addToCart(product)" type="button" class="btn btn-light">Toevoegen aan winkelwagen</button>
         </div>
       </div>
-
 
   </div>
 </div>

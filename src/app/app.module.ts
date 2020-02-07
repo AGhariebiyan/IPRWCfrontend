@@ -21,6 +21,9 @@ import { RegisterComponent } from './login/register/register.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { NavbarComponent } from './navbar/navbar.component';
 import {AuthService} from './services/auth-service';
+import {ShortenPipe} from './pipes/shorten.pipe';
+import { OrderComponent } from './order/order.component';
+import { FooterComponent } from './footer/footer.component';
 
 export function tokenGetter() {
   return localStorage.getItem('jwttoken');
@@ -41,7 +44,10 @@ export function tokenGetter() {
     AboutUsComponent,
     LoginComponent,
     RegisterComponent,
-    NavbarComponent
+    NavbarComponent,
+    ShortenPipe,
+    OrderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
