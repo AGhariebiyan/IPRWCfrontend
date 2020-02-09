@@ -24,7 +24,7 @@ export class CartComponent implements OnInit {
 
   emptyCart() {
     this.cartService.emptyCart();
-    this.getCart();
+    this.route.navigateByUrl('products');
   }
 
 }

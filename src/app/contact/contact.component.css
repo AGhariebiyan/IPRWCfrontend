@@ -1,6 +1,7 @@
-.header-image{
-  width: 100%;
-  background-color: red;
-  height: auto;
-  background-image: url('https://cdn.wccftech.com/wp-content/uploads/2019/01/Apple-1.jpg');
+.container{
+  margin-top: 1%;
+  width: 50%;
+}
+.btn{
+  margin-right: 1%;
 }
