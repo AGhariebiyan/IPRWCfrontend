@@ -41,13 +41,11 @@ export class AuthService implements CanActivate {
 
   canActivate(): boolean {
     const token = localStorage.getItem('jwttoken');
-    if (token !== null && !this.jwtHelper.isTokenExpired(token) && this.user.accountType !== 'admin') {
+    if (token !== null && !this.jwtHelper.isTokenExpired(token) && this.user.accountType === 'admin') {
       return true;
     } else {
       this.router.navigateByUrl('login');
     }
-
-    return true;
   }
 
   logout() {

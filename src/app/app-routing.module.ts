@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent},
   { path: 'contact', component: ContactComponent },
   { path: 'about-us', component: AboutUsComponent },
-  { path: 'admin/products', component: AdminComponent,  canActivate: [AuthService] },
+  { path: 'admin/products', component: AdminComponent, canActivate: [AuthService] },
   { path: 'admin/product/add', component: ProductAddComponent, canActivate: [AuthService] },
   { path: 'admin/update/:productId', component: ProductUpdateComponent, canActivate: [AuthService] },
   { path: 'cart', component: CartComponent },
