@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/product.model';
 import { ProductService } from 'src/app/services/product.service';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-product-update',
@@ -13,7 +13,7 @@ export class ProductUpdateComponent implements OnInit {
   public product: Product;
   productAddForm: FormGroup;
 
-  constructor(private productService: ProductService, private activatedRoute: ActivatedRoute) { }
+  constructor(private productService: ProductService, private activatedRoute: ActivatedRoute, private route: Router) { }
 
   ngOnInit() {
     this.getProduct();
@@ -50,6 +50,7 @@ export class ProductUpdateComponent implements OnInit {
     const product = new Product(name, description, price, amount, imageLink);
 
     this.productService.updateProduct(this.activatedRoute.snapshot.params.productId, product).subscribe();
+    this.route.navigateByUrl('admin/products');
   }
 
 }

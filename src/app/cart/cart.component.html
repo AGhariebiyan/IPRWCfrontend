@@ -1,6 +1,6 @@
 <div class="container">
   <button (click)="emptyCart()" type="button" class="btn btn-danger">Leeg Winkelwagen</button>
-  <button routerLink="/" type="button" class="btn btn-success">Bestel</button>
+  <button routerLink="../order" type="button" class="btn btn-success">Bestel</button>
   <div class="row">
 
     <div *ngFor="let item of cart; index as i" class="card col-sm-4">
