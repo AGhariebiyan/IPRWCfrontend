@@ -11,7 +11,7 @@ import {Router} from '@angular/router';
 export class CartComponent implements OnInit {
   cart: Cart[] = [];
 
-  constructor(private cartService: CartService, private route: Router) {
+  constructor(public cartService: CartService, private route: Router) {
     this.getCart();
   }
 

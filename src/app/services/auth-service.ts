@@ -5,6 +5,7 @@ import {CredentialModel} from '../models/credential.model';
 import {User} from '../models/user.model';
 import {CanActivate, Router} from '@angular/router';
 import {JwtHelperService} from '@auth0/angular-jwt';
+import {environment} from '../../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
@@ -63,7 +64,7 @@ export class AuthService implements CanActivate {
   }
 
   makePostRequest(body: CredentialModel) {
-    return this.http.makePostRequest('http://localhost:8080/login', body);
+    return this.http.makePostRequest(environment.serverIp + '/login', body);
   }
 
   setValueEmail(newValue): void {
