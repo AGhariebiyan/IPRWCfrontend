@@ -25,8 +25,6 @@ export class NavbarComponent implements OnInit {
     this.authService.getValueAccountType().subscribe((value) => {
       this.accountType = value;
     });
-    // this.accountType = this.authService.getCurrentAccountType();
-    // console.log(this.authService.getCurrentAccountType());
   }
 
   logout() {

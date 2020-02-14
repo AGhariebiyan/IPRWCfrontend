@@ -4,8 +4,8 @@
 
       <div class="form-group">
         <label for="">Product naam</label>
-        <input 
-        class="form-control" 
+        <input
+        class="form-control"
         type="text"
         id="name"
         name="name"
@@ -14,8 +14,8 @@
 
       <div class="form-group">
         <label for="">Beschrijving</label>
-        <input 
-        class="form-control" 
+        <input
+        class="form-control"
         type="text"
         id="description"
         name="description"
@@ -24,8 +24,8 @@
 
       <div class="form-group">
         <label for="">Prijs</label>
-        <input 
-        class="form-control" 
+        <input
+        class="form-control"
         type="number"
         name="price"
         id="price"
@@ -34,8 +34,8 @@
 
       <div class="form-group">
         <label for="">Aantal</label>
-        <input 
-        class="form-control" 
+        <input
+        class="form-control"
         type="number"
         name="amount"
         id="amount"
@@ -44,61 +44,20 @@
 
       <div class="form-group">
         <label for="">Afbeelding URL</label>
-        <input 
-        class="form-control" 
+        <input
+        class="form-control"
         type="text"
         name="imageLink"
         id="imageLink"
         formControlName="imageLink">
       </div>
+      <p *ngIf="!imageLinkLength">Afbeelding URL mag maar 255 karakters beschikken.</p>
 
       <button
       class="btn btn-success"
       type="submit"
       [disabled]="!productAddForm.valid">Toevoegen</button>
-    
+
     </form>
   </div>
 </div>
-
-
-<!-- <form [formGroup]="productAddForm" (ngSubmit)="onSubmit()">
-    <label for="">naam:</label>
-    <input
-    type="text"
-    id="name"
-    name="name"
-    formControlName="name"><br>
-
-    <label for="">beschrijving:</label>
-    <input
-    type="text"
-    id="description"
-    name="description"
-    formControlName="description"><br>
-
-    <label for="">prijs:</label>
-    <input
-    type="number"
-    name="price"
-    id="price"
-    formControlName="price"><br>
-
-    <label for="">aantal:</label>
-    <input
-    type="number"
-    name="amount"
-    id="amount"
-    formControlName="amount"><br>
-
-    <label for="">imageLink:</label>
-    <input
-    type="text"
-    name="imageLink"
-    id="imageLink"
-    formControlName="imageLink"><br>
-
-    <button
-      type="submit"
-      [disabled]="!productAddForm.valid">toevoegen</button>
-</form> -->

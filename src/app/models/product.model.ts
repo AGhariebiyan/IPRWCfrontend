@@ -54,11 +54,11 @@ export class Product {
         this._amount = value;
     }
 
-    get imageLink(): string {
+    get image_link(): string {
         return this._image_link;
     }
 
-    set imageLink(value: string) {
+    set image_link(value: string) {
         this._image_link = value;
     }
 

@@ -11,6 +11,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class ProductUpdateComponent implements OnInit {
   public product: Product;
+  imageLinkLength = true;
   productAddForm: FormGroup;
 
   constructor(private productService: ProductService, private activatedRoute: ActivatedRoute, private route: Router) { }
@@ -49,8 +50,13 @@ export class ProductUpdateComponent implements OnInit {
 
     const product = new Product(name, description, price, amount, imageLink);
 
-    this.productService.updateProduct(this.activatedRoute.snapshot.params.productId, product).subscribe();
-    this.route.navigateByUrl('admin/products');
+    if (imageLink.length <= 255) {
+      this.productService.updateProduct(this.activatedRoute.snapshot.params.productId, product).subscribe(data => this.getProduct());
+      this.route.navigateByUrl('admin/products');
+    } else {
+      this.imageLinkLength = false;
+    }
+
   }
 
 }

@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {Router} from '@angular/router';
 import {AuthService} from '../services/auth-service';
 import {CredentialModel} from '../models/credential.model';
-import { JwtHelperService } from '@auth0/angular-jwt';
 import {User} from '../models/user.model';
 
 @Component({
@@ -15,8 +14,9 @@ export class LoginComponent implements OnInit {
   isLoggedIn: boolean;
   loginForm: FormGroup;
   user: User;
+  ingelogd: boolean;
 
-  constructor(private authService: AuthService, private route: Router, public jwtHelper: JwtHelperService, private formBuilder: FormBuilder) {
+  constructor(private authService: AuthService, private route: Router, private formBuilder: FormBuilder) {
     this.authService.getValueIsLoggedIn().subscribe((value) => {
       this.isLoggedIn = value;
     });
@@ -38,12 +38,10 @@ export class LoginComponent implements OnInit {
     this.authService.login(credentials);
 
     if (this.isLoggedIn === true) {
-      // this.ingelogd = true;
-      console.log("ingelogd");
+      this.ingelogd = true;
       this.route.navigateByUrl("products");
     } else {
-      // this.ingelogd = false;
-      console.log("fout");
+      this.ingelogd = false;
     }
   }
 

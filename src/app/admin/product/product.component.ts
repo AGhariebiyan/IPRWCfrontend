@@ -19,11 +19,11 @@ export class ProductComponent implements OnInit {
 
   getProducts(): void {
     this.productService.getProductsFromDatabase().subscribe((product) => {
-      this.products = product; console.log(product); });
+      this.products = product; });
   }
 
   onDelete(id: number) {
-    this.productService.deleteProduct(id).subscribe();
+    this.productService.deleteProduct(id).subscribe( data => this.getProducts());
   }
 
   onUpdate(id: number) {

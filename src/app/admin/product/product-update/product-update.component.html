@@ -1,11 +1,11 @@
 <div class="container">
   <div class="row">
     <form class="col-sm-12" [formGroup]="productAddForm" (ngSubmit)="onSubmit()">
-      
+
       <div class="form-group">
         <label for="">Product naam</label>
-        <input 
-        class="form-control" 
+        <input
+        class="form-control"
         type="text"
         id="name"
         name="name"
@@ -14,8 +14,8 @@
 
       <div class="form-group">
         <label for="">Beschrijving</label>
-        <input 
-        class="form-control" 
+        <input
+        class="form-control"
         type="text"
         id="description"
         name="description"
@@ -24,8 +24,8 @@
 
       <div class="form-group">
         <label for="">Prijs</label>
-        <input 
-        class="form-control" 
+        <input
+        class="form-control"
         type="number"
         name="price"
         id="price"
@@ -34,8 +34,8 @@
 
       <div class="form-group">
         <label for="">Aantal</label>
-        <input 
-        class="form-control" 
+        <input
+        class="form-control"
         type="number"
         name="amount"
         id="amount"
@@ -44,19 +44,20 @@
 
       <div class="form-group">
         <label for="">Afbeelding URL</label>
-        <input 
-        class="form-control" 
+        <input
+        class="form-control"
         type="text"
         name="imageLink"
         id="imageLink"
         formControlName="imageLink">
       </div>
+      <p *ngIf="!imageLinkLength">Afbeelding URL mag maar 255 karakters beschikken.</p>
 
       <button
       class="btn btn-success"
       type="submit"
       [disabled]="!productAddForm.valid">Wijzigen</button>
-      
+
     </form>
   </div>
 </div>
