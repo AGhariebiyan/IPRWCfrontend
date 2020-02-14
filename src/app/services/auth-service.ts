@@ -34,7 +34,11 @@ export class AuthService implements CanActivate {
             this.setValueIsLoggedIn(true);
             if (this.user.jwttoken !== null) {
               localStorage.setItem('jwttoken', this.user.jwttoken);
+            }
+            if (this.user.accountType === 'admin') {
               this.router.navigateByUrl('admin/products');
+            } else {
+              this.router.navigateByUrl('products');
             }
           }
         }
