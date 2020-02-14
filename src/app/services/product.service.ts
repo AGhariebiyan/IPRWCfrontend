@@ -2,30 +2,36 @@ import { HttpService } from './http-client.service';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product } from '../models/product.model';
+import {environment} from '../../environments/environment.prod';
 
 @Injectable({
     providedIn: 'root'
 })
 
 export class ProductService {
+    products: Product[] = [];
 
-    constructor(private http: HttpService){}
+    constructor(private http: HttpService) {}
 
-    getProducts(): Observable<Product[]>{
-        return this.http.makeGetRequest('http://localhost:8080/product');
+    getProductsFromDatabase(): Observable<Product[]> {
+        return this.http.makeGetRequest(environment.serverIp + '/product');
     }
 
-    addProduct(body:any) {
-        this.http.makePostRequest('http://localhost:8080/product/add', body)
-        console.log(body + "in de service")
+    addProduct(body: any) {
+        return this.http.makePostRequest(environment.serverIp + '/product/add', body);
+        console.log(body + 'in de service');
     }
 
     deleteProduct(id: number) {
-        this.http.makeDeleteRequest("http://localhost:8080/product/delete/" + id);
+      return this.http.makeDeleteRequest(environment.serverIp + '/product/delete/' + id);
     }
 
     updateProduct(id: number, body: any) {
-        this.http.makePutRequest("http://localhost:8080/product/update/" + id, body)
+        return this.http.makePutRequest(environment.serverIp + '/product/update/' + id, body);
+    }
+
+    getProductById(id: number) {
+      return this.http.makeGetRequest(environment.serverIp + '/product/' + id);
     }
 
 }

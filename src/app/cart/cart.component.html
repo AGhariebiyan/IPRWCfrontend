@@ -1,0 +1,24 @@
+<div class="container">
+  <button (click)="emptyCart()" type="button" class="btn btn-danger">Leeg Winkelwagen</button>
+  <button routerLink="../order" type="button" class="btn btn-success">Bestel</button>
+  <div class="row">
+
+    <div *ngFor="let item of cart; index as i" class="card col-sm-4">
+      <img src="https://www.prowarehouse.nl/uploads/fmimages/2387_2086.png" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{item.product.name}}</h5>
+        <p class="card-text">{{item.product.description}}</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">&euro;{{item.product.price}},-</li>
+        <li class="list-group-item">aantal beschikbaar: {{item.product.amount}}</li>
+      </ul>
+      <div class="card-body">
+        <button (click)="cartService.removeFromCart(i)" type="button" class="btn btn-danger">Verwijder van winkelwagen</button>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+

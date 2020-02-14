@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-12 col-md-ofsset-3">
+      <form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label>Email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="inputEmail4"
+              placeholder="Email">
+          </div>
+          <div class="form-group col-md-6">
+            <label>Wachtwoord</label>
+            <input
+              type="password"
+              class="form-control"
+              placeholder="Password">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Adres</label>
+          <input
+            type="text"
+            class="form-control"
+            id="inputAddress"
+            placeholder="De grotehoustraat">
+        </div>
+        <div class="form-group">
+          <label>Bezorgadres</label>
+          <input
+            type="text"
+            class="form-control"
+            id="bezorgadres"
+            placeholder="De kleinehoustraat">
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label>Stad</label>
+            <input type="text" class="form-control" id="inputCity">
+          </div>
+          <div class="form-group col-md-4">
+            <label>Provincie</label>
+            <select id="inputState" class="form-control">
+              <option selected>Noord-Holland</option>
+              <option>Zuid-Holland</option>
+              <option>Friesland</option>
+              <option>Noord-Brabant</option>
+              <option>Utrecht</option>
+            </select>
+          </div>
+          <div class="form-group col-md-2">
+            <label>Postcode</label>
+            <input type="text" class="form-control" id="inputZip">
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Bestel</button>
+      </form>
+
+    </div>
+  </div>
+</div>

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl} from '@angular/forms'
+import {FormGroup, Validators, FormBuilder} from '@angular/forms';
 import { ProductService } from 'src/app/services/product.service';
 import { Product } from 'src/app/models/product.model';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-product-add',
@@ -9,18 +10,19 @@ import { Product } from 'src/app/models/product.model';
   styleUrls: ['./product-add.component.css']
 })
 export class ProductAddComponent implements OnInit {
-
+  public product: Product;
+  imageLinkLength = true;
   productAddForm: FormGroup;
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService, private route: Router, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    this.productAddForm = new FormGroup({
-      'name': new FormControl(null),
-      'description': new FormControl(null),
-      'price': new FormControl(null),
-      'amount': new FormControl(null),
-      'imageLink': new FormControl(null)
+    this.productAddForm = this.formBuilder.group({
+      name: ['', [Validators.required]],
+      description: ['', [Validators.required]],
+      price: ['', [Validators.required]],
+      amount: ['', [Validators.required]],
+      imageLink: ['', [Validators.required]]
     });
   }
 
@@ -31,12 +33,15 @@ export class ProductAddComponent implements OnInit {
     const amount = this.productAddForm.value.amount;
     const imageLink = this.productAddForm.value.imageLink;
 
-    console.log(name + description + price + amount + imageLink);
-
     const product = new Product(name, description, price, amount, imageLink);
 
-    this.productService.addProduct(product);
-    // console.log(eachProduct)
+    if (imageLink.length <= 255) {
+      this.productService.addProduct(product).subscribe( data => this.product = product);
+      this.route.navigateByUrl('products');
+    } else {
+      this.imageLinkLength = false;
+    }
+
   }
 
 }
