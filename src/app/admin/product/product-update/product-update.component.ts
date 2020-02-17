@@ -50,7 +50,7 @@ export class ProductUpdateComponent implements OnInit {
 
     const product = new Product(name, description, price, amount, imageLink);
 
-    if (imageLink.length <= 255) {
+    if (imageLink.length <= 255 && description.length <= 255) {
       this.productService.updateProduct(this.activatedRoute.snapshot.params.productId, product).subscribe(data => this.getProduct());
       this.route.navigateByUrl('admin/products');
     } else {

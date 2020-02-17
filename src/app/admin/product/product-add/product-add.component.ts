@@ -35,7 +35,7 @@ export class ProductAddComponent implements OnInit {
 
     const product = new Product(name, description, price, amount, imageLink);
 
-    if (imageLink.length <= 255) {
+    if (imageLink.length <= 255 && description.length <= 255) {
       this.productService.addProduct(product).subscribe( data => this.product = product);
       this.route.navigateByUrl('products');
     } else {
